@@ -33,7 +33,7 @@ public class bullet : MonoBehaviour
             Destroy(gameObject);
         }
         else {
-            Destroy(gameObject, 10);
+            Destroy(gameObject);
         }
         
 

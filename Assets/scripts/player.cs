@@ -7,9 +7,10 @@ public class player : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] GameObject bullet;
     [SerializeField] GameObject insta_kill_bullet;
-    float minX, maxX, maxY, minY;
+    [SerializeField] float fireRate;
+    float minX, maxX, maxY, minY, timer;
     float starttime;
-    [SerializeField] float modo;
+    float modo = 2;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +46,7 @@ public class player : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
 
-                if (starttime + 1 < Time.time)
+                if (starttime + fireRate < Time.time)
                 {
                     starttime = Time.time;
                     //crea el objeto de el elemento bullet en la posicion transform
@@ -61,23 +62,25 @@ public class player : MonoBehaviour
         }
         else if (modo == 0)
         {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                timer = Time.time;
+            }
             if (Input.GetKeyUp(KeyCode.Space))
             {
-
-                if (starttime + 3 < Time.time)
+                if ((Time.time - timer) >= 3)
                 {
                     starttime = Time.time;
                     //crea el objeto de el elemento bullet en la posicion transform
                     Instantiate(insta_kill_bullet, transform.position, transform.rotation);
+                    Debug.Log("Me mantuve por mas de 3 segundos");
+                    Debug.Log((Time.time - timer).ToString("00:00.00"));
                 }
-
             }
             if (Input.GetKeyUp(KeyCode.I))
             {
                 modo = 2;
                 Debug.Log(modo);
-            
-
             }
         }
 

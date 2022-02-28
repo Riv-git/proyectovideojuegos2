@@ -12,6 +12,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -28049512594997092, guid: e41121609a67c484ebd2eccab51efd21, type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -28049512594997092, guid: e41121609a67c484ebd2eccab51efd21, type: 3}
       propertyPath: velocidad_eje_x
       value: 1
       objectReference: {fileID: 0}
